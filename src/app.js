@@ -1,7 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import 'normalize-css/normalize.css';
+import { Provider } from 'react-redux';
+import AppRouter from './routes/app-router';
+import ConfigureStore from './store/configure-store';
+import 'normalize.css/normalize.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import './styles/styles.scss';
 
-ReactDOM.render(<h1>Hello World</h1>, document.getElementById('app'));
+const store = ConfigureStore();
+
+const jsx = (
+    <Provider store={store}>
+        <AppRouter />
+    </Provider>
+);
+
+ReactDOM.render(jsx, document.getElementById('app'));
